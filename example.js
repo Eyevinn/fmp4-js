@@ -1,8 +1,9 @@
 const fMP4 = require("./index.js");
 const fs = require("fs");
 
-const TESTFILE = "./test/support/testassets/video.dash";
+//const TESTFILE = "./test/support/testassets/video.dash";
 //const TESTFILE = "/Users/jobi/Downloads/Sunrise.mp4";
+const TESTFILE = "./test/support/testassets/cmaf_chunk.mp4";
 
 function printBox(box, indent) {
   let indstr = "";
