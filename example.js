@@ -35,5 +35,8 @@ fs.createReadStream(TESTFILE)
   for (let i = 0; i < boxes.length; i++) {
     let parsedBox = boxes[i].parse();
     printBox(parsedBox, 0);
+    if (parsedBox.hdr.type === 'mdat') {
+      console.log("  " + boxes[i].data.slice(0, 8) + ",...")
+    }
   }
 })
