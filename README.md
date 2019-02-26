@@ -1,4 +1,4 @@
-A Javascript library to parse MP4 fragments (ISO 14496-1 Media Format)
+A Javascript library to parse ISO Base Media File Format (MPEG-4 Part 12) ISO/IEC 14496-12
 
 ## Usage (Node JS)
 
@@ -19,5 +19,12 @@ request.get("http://example.com/video.dash")
 
   // Obtain all boxes found in the fragment
   const boxes = fMP4.boxes;
+
+  // Parse each box
+  for (let i = 0; i < boxes.length; i++) {
+    let parsedBox = boxes[i].parse();
+
+    console.log(parsedBox);
+  }
 });
 ```
