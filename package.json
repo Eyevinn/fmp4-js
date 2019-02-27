@@ -2,11 +2,13 @@
   "name": "fmp4",
   "version": "0.1.0",
   "description": "fMP4 parser in Javascript",
+  "repository": "https://github.com/Eyevinn/fmp4-js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node example.js",
+    "postversion": "git push && git push --tags"
   },
-  "author": "",
+  "author": "Jonas Rydholm Birme <jonas.birme@eyevinn.se> (https://eyevinn.github.io)",
   "license": "MIT",
   "dependencies": {
     "logplease": "^1.2.15"
