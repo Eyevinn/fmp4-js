@@ -3,7 +3,7 @@ A Javascript library to parse ISO Base Media File Format (MPEG-4 Part 12) ISO/IE
 ## Usage (Node JS)
 
 ```
-npm install --save fmp4
+npm install --save fmp4.js
 ```
 
 The library implements the `Writable` stream interface and acts a a "sink". For example to download
@@ -11,7 +11,7 @@ and parse an MP4 fragment:
 
 ```
 const request = require("request");
-const fMP4 = require("fmp4");
+const fMP4 = require("fmp4.js");
 
 request.get("http://example.com/video.dash")
 .pipe(fMP4.parse())
