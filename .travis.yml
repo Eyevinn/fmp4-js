@@ -1,3 +1,5 @@
+sudo: required
+dist: trusty
 language: node_js
 node_js:
 - '8'
@@ -8,3 +10,4 @@ deploy:
     secure: J3XBi5MDMKpiKzMiydMpRdQ6bU6k0fe5z7B665lanHwh3+tsUuQBvZDDJH9bCN4bmG4tOTm14vJkBuR5NfG9g1Eb71LgZb/RAJowmELBXy79S2pgWwiejZeGpvMLfv0y9VFrNNxcob9kvtDRhL3vuQ/c0qsz+ZGAERWJKctUU3ML4P0zfOZmiHmTBESLNpIpJhS0VPUkxAxtqdtDglACBFvViBd/w/3fBjqnjOg6nRWvvvVU1s8jFQVTEA6agQyqm4SVEZFGDe5FPjRRb2y9afpLtvNdOSTHpzpyKTi9CL2Tr6FfoGb6NDgYQeXgceQCdBqNiI8NRRvklkbm0J7KteBPsL0gPHTIiz8tQsjefUYZdmhibqD2EDT9VKCP2I47Opu/WoLhXhlnCf9EPgfK/tEsLRQce0sV4ma2H2CvTHqSLLWyQ+GO1l0PeG8rG1cHOs/M0tMPAkaaIuBwgFXlcDnyZKNz1ulveFDc4XoSps5ksrcucjxz6HzbZNC8pzYJVkuyjUPH0vGI4CXlQv3STa0mP4/SDtEjGACTEKpAQ/VbT4Rc9Eab/songOirr4Ehw0URs5L4sikW5LCrBY0XlQ721iUdX6+MVDzexw9NRg2VbatCCZ4jRTXwiA7JSpzrNyjlnblRtX3duNUA1864j4hVoQWShsssUFX0+HNKN50=
   on:
     tags: true
+    repo: Eyevinn/fmp4-js
