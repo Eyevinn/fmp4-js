@@ -1,3 +1,11 @@
 language: node_js
 node_js:
 - '8'
+deploy:
+  provider: npm
+  email: jonas.birme@eyevinn.se
+  on:
+    tags: true
+    repo: Eyevinn/fmp4-js
+  api_key:
+    secure: FQIWu9fkAO68sx9XlmV9y+TcDKTP3ELx5V6DJGmoGlhyHD7sotIc/KeKUQWyFVy/Y4yML457CO77rrSQvoiggNOBr3/dnIeKiF/bAXzuDxWLIEz+KAqF/ppFWoAJAPbPWdxQICzd9/9QPPll+AF512JOS/CWht/LfqE4/v0gS0fwoJqrLVZZemSmBvKBnKZldgOPOo+IW2Vi12BONdaLM7jV0nWxQiCU0NYnSMjAJEDLfCIIS0fHLE02kJVsIG7OqQvszd750ptvSME7AK2942LMTp+qHzUxraa1BVph36LokveG6B/j31jJ1djYrVK8Zr3MJYlalcGZlBAWRHUBy/gtaFfJQuP/WY0x14W8PZyp0TFTpcnI+vKhXKqRiEOae8rz4oDqW9UyAG2QUVTlzN3ikfNq3v1ZU34hkUhDybjSMcqQyK9Ws0y1ApsoBY9UY4l1K5Y+1u3oOmq1ULuBEGhhcUSJ2MdpMxB/mIKJJaC0UPbmqr8K1PSfIQjFxJWPkXRCnmkORr4w+jzlikjjvG7wxf7EU/uNtMnxxd0n4k+LYUiTCcYOHNPF7UC3A3Gl/Pxy8Aecnwq3vdZERIaKkrU8h7uUmqQNv1w9oUbJTl4a01EzCC1qwjbQ7dOJ7cI82hwFNoU8tELlU35eG6oMSwMLP3/o0LYfKWZ7ZwNkj2c=
