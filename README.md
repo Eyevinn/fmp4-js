@@ -22,8 +22,15 @@ request.get("http://example.com/video.dash")
 
   // Parse each box
   for (let i = 0; i < boxes.length; i++) {
-    let parsedBox = boxes[i].parse();
+    let parsedBox = boxes[i].parse(); // MP4Box
 
+    /**
+     *
+     * MP4Box {
+     *   hdr: { size, type },
+     *   data // unparsed payload
+     * }
+     */
     console.log(parsedBox);
   }
 });
