@@ -1,6 +1,6 @@
 {
   "name": "fmp4.js",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "fMP4 parser in Javascript",
   "repository": "https://github.com/Eyevinn/fmp4-js",
   "main": "index.js",
