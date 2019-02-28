@@ -21,6 +21,15 @@ describe("MP4 Box Parser", () => {
     let box = boxParser['ftyp'](data);
     expect(box.major_brand).toEqual('iso6');
     expect(box.minor_version).toEqual(0);
-    expect(box.compatible_brands.length).toEqual(2);
+    expect(box.compatible_brands).toEqual(['iso6', 'dash']);
+  });
+
+  it("can parse an 'styp' box", () => {
+    let byteArray = hexToBytes('000000187374797069736f360000000069736f366d736468');
+    let data = new Uint8Array(byteArray.slice(8));
+    let box = boxParser['styp'](data);
+    expect(box.major_brand).toEqual('iso6');
+    expect(box.minor_version).toEqual(0);
+    expect(box.compatible_brands).toEqual(['iso6', 'msdh']);
   });
 });
