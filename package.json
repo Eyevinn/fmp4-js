@@ -5,12 +5,15 @@
   "repository": "https://github.com/Eyevinn/fmp4-js",
   "main": "index.js",
   "scripts": {
-    "test": "node example.js",
+    "test": "jasmine",
     "postversion": "git push && git push --tags"
   },
   "author": "Jonas Rydholm Birme <jonas.birme@eyevinn.se> (https://eyevinn.github.io)",
   "license": "MIT",
   "dependencies": {
     "logplease": "^1.2.15"
+  },
+  "devDependencies": {
+    "jasmine": "^3.3.1"
   }
 }
