@@ -32,4 +32,16 @@ describe("MP4 Box Parser", () => {
     expect(box.minor_version).toEqual(0);
     expect(box.compatible_brands).toEqual(['iso6', 'msdh']);
   });
+
+  it("can parse an 'sidx' box", () => {
+    let byteArray = hexToBytes('0000002c73696478000000000000000100007530000000000000000000000001001003db0000e2ca90000000');
+    let data = new Uint8Array(byteArray.slice(8));
+    let box = boxParser['sidx'](data); 
+    expect(box.timescale).toEqual(30000);
+    expect(box.entries.length).toEqual(1);
+    expect(box.entries[0].reference_type).toEqual(0);
+    expect(box.entries[0].reference_size).toEqual(1049563);
+    expect(box.entries[0].subsegment_duration).toEqual(58058);
+    expect(box.entries[0].starts_with_SAP).toEqual(1);
+  });
 });
