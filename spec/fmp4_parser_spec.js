@@ -93,5 +93,16 @@ describe("MP4 Box Parser", () => {
     expect(b.mdhd.timescale).toEqual(30000);
     expect(b.mdhd.duration).toEqual(0);
     expect(b.mdhd.language).toEqual('und');
-  })
+  });
+
+  it("can parse an 'hdlr' box", () => {
+    let byteArray = hexToBytes('0000003268646c7200000000000000007669646500000000000000000000000055535020566964656f2048616e646c6572000000000000000000');
+    let data = new Uint8Array(byteArray);
+    let box = new MP4Box(data.length, 'hdlr', data.slice(0, 8));
+    box.data = data.slice(8);
+    let b = box.parse();
+    expect(b.hdr.hdrsize).toEqual(12);
+    expect(b.hdlr.handler_type).toEqual('vide');
+    expect(b.hdlr.handler_name).toEqual('USP Video Handler');
+  });
 });
