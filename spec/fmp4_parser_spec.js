@@ -128,5 +128,12 @@ describe("MP4 Box Parser", () => {
 
   it("can parse an 'stsd' box", () => {
     let byteArray = hexToBytes('000000ab7374736400000000000000010000009b617663310000000000000001000000000000000000000000000000000780043800480000004800000000000000010a41564320436f64696e670000000000000000000000000000000000000000000018ffff000000316176634301640032ffe1001967640032acd980780227e5c04400000fa40003a9823c60c66801000568e97b2c8b00000014627472740004e97b00b22a10004323800000000000000000');
+    let data = new Uint8Array(byteArray);
+    let box = new MP4Box(data.length, 'stsd', data.slice(0, 8));
+    box.data = data.slice(8);
+    let b = box.parse();
+    expect(b.hdr.hdrsize).toEqual(12);
+    expect(b.stsd.entry_count).toEqual(1);
+    expect(b.stsd.children[0].hdr.type).toEqual('avc1');
   });
 });
