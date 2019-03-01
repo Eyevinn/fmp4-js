@@ -11,7 +11,9 @@ function printBox(b, indent) {
     let keys = Object.keys(b[b.hdr.type]);
     keys.forEach((k, i) => {
       if (k !== 'children') {
-        if (typeof b[b.hdr.type][k] === 'object') {
+        if (k === 'samples') { 
+
+        } else if (typeof b[b.hdr.type][k] === 'object') {
           b[b.hdr.type][k].forEach((v, j) => {
             console.log(`${indstr}  ${k} = ${v}`);
           });
