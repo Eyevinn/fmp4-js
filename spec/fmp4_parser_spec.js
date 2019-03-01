@@ -65,5 +65,21 @@ describe("MP4 Box Parser", () => {
     let b = box.parse();
     expect(b.hdr.hdrsize).toEqual(12);
     expect(b.mvhd.timescale).toEqual(1);
+    expect(b.mvhd.duration).toEqual(0);
+  });
+
+  it("can parse an 'tkhd' box", () => {
+    let byteArray = hexToBytes('0000005c746b68640000000700000000000000000000000100000000000000000000000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000004000000007800000043800000000000000000000');
+    let data = new Uint8Array(byteArray);
+    let box = new MP4Box(data.length, 'tkhd', data.slice(0, 8));
+    box.data = data.slice(8);
+    let b = box.parse();
+    expect(b.hdr.hdrsize).toEqual(12);
+    expect(b.tkhd.flags).toEqual(7);
+    expect(b.tkhd.track_enabled).toEqual(true);
+    expect(b.tkhd.track_id).toEqual(1);
+    expect(b.tkhd.duration).toEqual(0);
+    expect(b.tkhd.width).toEqual(1920);
+    expect(b.tkhd.height).toEqual(1080);
   });
 });
