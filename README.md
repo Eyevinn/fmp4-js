@@ -27,11 +27,20 @@ request.get("http://example.com/video.dash")
     /**
      *
      * MP4Box {
-     *   hdr: { size, type },
-     *   data // unparsed payload
+     *   hdr: { size, type, hdrsize },
+     *   $type: {
+     *     key/value pairs,
+     *     array of child boxes (if available)
+     *   }
      * }
      */
     console.log(parsedBox);
   }
 });
+```
+
+An example implementation of the library that parses and dump the contents of an ISOBMFF file is included:
+
+```
+node mp4dump.js test/support/testassets/cmaf_chunk.mp4
 ```
