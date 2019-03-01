@@ -82,4 +82,16 @@ describe("MP4 Box Parser", () => {
     expect(b.tkhd.width).toEqual(1920);
     expect(b.tkhd.height).toEqual(1080);
   });
+
+  it("can parse an 'mdhd' box", () => {
+    let byteArray = hexToBytes('000000206d646864000000000000000000000000000075300000000055c400000000000000000000');
+    let data = new Uint8Array(byteArray);
+    let box = new MP4Box(data.length, 'mdhd', data.slice(0, 8));
+    box.data = data.slice(8);
+    let b = box.parse();
+    expect(b.hdr.hdrsize).toEqual(12);
+    expect(b.mdhd.timescale).toEqual(30000);
+    expect(b.mdhd.duration).toEqual(0);
+    expect(b.mdhd.language).toEqual('und');
+  })
 });
