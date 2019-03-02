@@ -1,3 +1,7 @@
+// Copyright 2019 Eyevinn Technology. All rights reserved
+// Use of this source code is governed by a MIT License
+// license that can be found in the LICENSE file.
+// Author: Jonas Rydholm Birme (Eyevinn Technology)
 const fMP4 = require("./index.js");
 const fs = require("fs");
 
