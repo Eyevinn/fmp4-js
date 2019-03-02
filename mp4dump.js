@@ -11,8 +11,21 @@ function printBox(b, indent) {
     let keys = Object.keys(b[b.hdr.type]);
     keys.forEach((k, i) => {
       if (k !== 'children') {
-        if (k === 'samples') { 
-
+        if (k === 'samples') {
+          if (b.hdr.type === 'trun') {
+            if (b['trun'].sample_duration_present) {
+              console.log(`${indstr}  sample_durations = [${b['trun'].samples.map(s => s.duration).join(",")}]`);
+            }
+            if (b['trun'].sample_size_present) {
+              console.log(`${indstr}  sample_sizes = [${b['trun'].samples.map(s => s.size).join(",")}]`);
+            }
+            if (b['trun'].sample_flags_present) {
+              console.log(`${indstr}  sample_flags = [${b['trun'].samples.map(s => s.flags).join(",")}]`);
+            }
+            if (b['trun'].sample_composition_time_offsets_present) {
+              console.log(`${indstr}  sample_composition_time_offsets = [${b['trun'].samples.map(s => s.composition_time_offset).join(",")}]`);
+            }
+          }
         } else if (typeof b[b.hdr.type][k] === 'object') {
           b[b.hdr.type][k].forEach((v, j) => {
             console.log(`${indstr}  ${k} = ${v}`);
