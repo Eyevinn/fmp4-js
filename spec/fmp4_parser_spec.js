@@ -136,4 +136,40 @@ describe("MP4 Box Parser", () => {
     expect(b.stsd.entry_count).toEqual(1);
     expect(b.stsd.children[0].hdr.type).toEqual('avc1');
   });
+
+  it("can parse an 'tfhd' box", () => {
+    let byteArray = hexToBytes('0000001c746668640002002a0000000100000001000003e901010000000000000000000');
+    let data = new Uint8Array(byteArray);
+    let box = new MP4Box(data.length, 'tfhd', data.slice(0, 8));
+    box.data = data.slice(8);
+    let b = box.parse();
+    expect(b.hdr.hdrsize).toEqual(12);
+    expect(b.tfhd.base_data_offset_present).toBeFalsy();
+    expect(b.tfhd.sample_description_index_present).toBeTruthy();
+    expect(b.tfhd.default_sample_duration_present).toBeTruthy();
+    expect(b.tfhd.default_sample_flags_present).toBeTruthy();
+    expect(b.tfhd.default_base_is_moof).toBeTruthy();
+    expect(b.tfhd.default_sample_duration).toEqual(1001);
+  });
+
+  it("can parse an 'tfdt' box", () => {
+    let byteArray = hexToBytes('00000014746664740100000000000000000000000000000000000000');
+    let data = new Uint8Array(byteArray);
+    let box = new MP4Box(data.length, 'tfdt', data.slice(0, 8));
+    box.data = data.slice(8);
+    let b = box.parse();
+    expect(b.hdr.hdrsize).toEqual(12);
+    expect(b.tfdt.base_media_decode_time).toEqual(0);
+  });
+
+  it("can parse a 'trun' box", () => {
+    let byteArray = hexToBytes('000001e87472756e01000a050000003a00000240020000000002dc9f0000000000003c9000000bbb000010eb0000000000000666fffff82e00000b9ffffffc17000055b000000bbb000015d50000000000001012fffff82e00000585fffffc17000039fa0000000000007e8c000007d200001cdcfffffc1700000ffdfffffc170000d0ea000003e9000010cafffffc170000cce400000bbb000018a20000000000000b01fffff82e00000a79fffffc1700006cdd000007d200000f42fffffc1700000d40fffffc170000e6d000000bbb00003c890000000000000db4fffff82e00001d54fffffc170000b50a000007d200002741fffffc170000120afffffc170000ce4f00000bbb00002b350000000000000df7fffff82e00000ef7fffffc170000ea5700000bbb000022400000000000000e1efffff82e00001381fffffc170000961400000bbb000027f30000000000001542fffff82e00001719fffffc1700009f8600000bbb000023b70000000000001485fffff82e000010a4fffffc1700009726000007d200001d65fffffc1700001052fffffc17000080b6000007d200001c00fffffc1700001132fffffc1700006e4e000003e90000146afffffc1700004c9f00000bbb000023250000000000000fcefffff82e00000e98fffffc1700002121000000000000000000000000');
+    let data = new Uint8Array(byteArray);
+    let box = new MP4Box(data.length, 'trun', data.slice(0, 8));
+    box.data = data.slice(8);
+    let b = box.parse();
+    expect(b.hdr.hdrsize).toEqual(12);
+    expect(b.trun.sample_count).toEqual(58);
+    expect(b.trun.data_offset).toEqual(576);
+  });
 });
