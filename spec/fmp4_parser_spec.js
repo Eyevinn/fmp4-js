@@ -1,3 +1,7 @@
+// Copyright 2019 Eyevinn Technology. All rights reserved
+// Use of this source code is governed by a MIT License
+// license that can be found in the LICENSE file.
+// Author: Jonas Rydholm Birme (Eyevinn Technology)
 const PARSER = require('../lib/fmp4_parser.js');
 const Logger = require("logplease");
 
@@ -66,6 +70,7 @@ describe("MP4 Box Parser", () => {
     expect(b.hdr.hdrsize).toEqual(12);
     expect(b.mvhd.timescale).toEqual(1);
     expect(b.mvhd.duration).toEqual(0);
+    expect(b.mvhd.next_track_id).toEqual(2);
   });
 
   it("can parse an 'tkhd' box", () => {
